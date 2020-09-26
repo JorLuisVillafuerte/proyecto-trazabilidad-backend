@@ -34,9 +34,9 @@ public class Productos implements Serializable {
     private String codProducto;
     private String descripcion;
     private String imagen;
-    @OneToMany(mappedBy = "idproducto")
+    /*@OneToMany(mappedBy = "idproducto")
     private List<PedidoDetalle> pedidoDetalleList;
-
+    */
  
     public Productos(Integer idproducto) {
         this.idproducto = idproducto;

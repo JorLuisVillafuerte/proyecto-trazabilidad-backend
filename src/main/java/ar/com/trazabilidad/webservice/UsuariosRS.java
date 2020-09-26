@@ -55,14 +55,17 @@ public class UsuariosRS {
     }
     @PostMapping("/validarLogin")
     public ResponseEntity validarLogin(@RequestBody Usuarios user1){
+        //BUSCAR UN USUARIO CON EL DNI OBTENIDO
         Optional<Usuarios> user = service.findByDni(user1.getDni());
-        
+        //VERIFICAR SI SE ENCONTRO UN USER CON EL DNI ENVIADO
         if(!user.isPresent()){
             throw new ResponseStatusException(
              HttpStatus.NOT_FOUND, "DNI o contraseña incorrecto."
             );
         }
+        //VALIDAMOS SI LAS PW COINCIDEN
         if(user.get().getPassword().equals(user1.getPassword())){
+            //SI LAS PW COINCIDEN GENERAMOS TOKEN Y ENVIAMOS
             HashMap<String, String> map = new HashMap<String, String>();
             map.put("token", generarToken(user.get()));
             return ResponseEntity.ok(map);

@@ -1,5 +1,6 @@
 package ar.com.trazabilidad.dominio;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import javax.persistence.Basic;
@@ -15,7 +16,6 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
@@ -34,8 +34,50 @@ public class PedidoDetalle implements Serializable {
     @JoinColumn(name = "idpedido", referencedColumnName = "idpedido")
     @ManyToOne
     private Pedidos idpedido;
-    @JoinColumn(name = "idproducto", referencedColumnName = "idproducto")
     @ManyToOne
+    @JoinColumn(name = "idproducto", referencedColumnName = "idproducto")
     private Productos idproducto;
+
+    @JsonBackReference
+    public Pedidos getIdpedido() {
+        return idpedido;
+    }
+
+    public void setIdpedido(Pedidos idpedido) {
+        this.idpedido = idpedido;
+    }
+
+    public Integer getIdpedidoDetalle() {
+        return idpedidoDetalle;
+    }
+
+    public void setIdpedidoDetalle(Integer idpedidoDetalle) {
+        this.idpedidoDetalle = idpedidoDetalle;
+    }
+
+    public BigDecimal getUnidades() {
+        return unidades;
+    }
+
+    public void setUnidades(BigDecimal unidades) {
+        this.unidades = unidades;
+    }
+
+    public BigDecimal getCantidad() {
+        return cantidad;
+    }
+
+    public void setCantidad(BigDecimal cantidad) {
+        this.cantidad = cantidad;
+    }
+
+    public Productos getIdproducto() {
+        return idproducto;
+    }
+
+    public void setIdproducto(Productos idproducto) {
+        this.idproducto = idproducto;
+    }
+    
     
 }
