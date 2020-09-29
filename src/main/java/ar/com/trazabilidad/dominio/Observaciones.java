@@ -6,6 +6,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -23,5 +25,13 @@ public class Observaciones implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     private Integer idobservacion;
-    private String nombre;
+    private String codObservacion;
+    private String motivo;
+    private Integer cantidadPiezas;
+    @JoinColumn(name = "idpedido", referencedColumnName = "idpedido")
+    @ManyToOne
+    private Pedidos idpedido;
+    @JoinColumn(name = "idproducto", referencedColumnName = "idproducto")
+    @ManyToOne
+    private Productos idproducto;
 }
