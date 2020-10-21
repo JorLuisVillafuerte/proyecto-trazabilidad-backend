@@ -50,5 +50,10 @@ public class PedidosServiceImp implements PedidosService{
     public void delete(Pedidos pedido) {
         pedidosdao.delete(pedido);
     }
+
+    @Override
+    public List<Pedidos> saveAll(List<Pedidos> pedidos) {
+        return(List<Pedidos>)pedidosdao.saveAll(pedidos);
+    }
     
 }

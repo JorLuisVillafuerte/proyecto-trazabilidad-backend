@@ -50,5 +50,15 @@ public class PedidoDetalleServiceImp implements PedidoDetalleService{
     public void delete(PedidoDetalle pedidodetalle) {
         pedidodetalledao.delete(pedidodetalle);
     }
+
+    @Override
+    public List<PedidoDetalle> findAllByIdPedido(Integer id) {
+        return pedidodetalledao.findAllByIdpedido(id);
+    }
+
+    @Override
+    public List<PedidoDetalle> saveAll(List<PedidoDetalle> pedidodetalles) {
+        return (List<PedidoDetalle>) pedidodetalledao.saveAll(pedidodetalles);
+    }
     
 }

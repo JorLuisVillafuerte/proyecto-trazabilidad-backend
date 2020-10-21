@@ -6,6 +6,7 @@ import java.util.Optional;
 
 public interface PedidosService {
     public Pedidos save(Pedidos pedido);
+    public List<Pedidos> saveAll(List<Pedidos> pedidos);
     public List<Pedidos> findAll();
     public Optional<Pedidos> findById(Integer id);
     public boolean existsById(Integer id);

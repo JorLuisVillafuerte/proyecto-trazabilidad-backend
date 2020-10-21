@@ -47,6 +47,10 @@ public class PedidosRS {
     public Pedidos crearPedido(@RequestBody Pedidos pedido){
         return service.save(pedido);
     }
+    @PostMapping("/all")
+    public List<Pedidos> crearPedidos(@RequestBody List<Pedidos> pedidos){
+        return service.saveAll(pedidos);
+    }
     @DeleteMapping("/id/{id}")
     public ResponseEntity borrarPorId(@PathVariable("id") Integer id){
         Optional<Pedidos> pedido = service.findById(id);

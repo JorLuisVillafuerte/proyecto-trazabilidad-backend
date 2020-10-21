@@ -18,6 +18,7 @@ import javax.persistence.TemporalType;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.CreationTimestamp;
 
 
 @AllArgsConstructor
@@ -36,6 +37,7 @@ public class Pedidos implements Serializable {
     private String descripcion;
     private String cliente;
     @Column(updatable=false)
+    @CreationTimestamp
     @Temporal(TemporalType.TIMESTAMP)
     private Date fechaEmision;
     @Temporal(TemporalType.TIMESTAMP)

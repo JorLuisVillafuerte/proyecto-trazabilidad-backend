@@ -2,6 +2,7 @@ package ar.com.trazabilidad.webservice;
 
 import ar.com.trazabilidad.dominio.PedidoDetalle;
 import ar.com.trazabilidad.servicio.PedidoDetalleService;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import lombok.extern.slf4j.Slf4j;
@@ -43,9 +44,25 @@ public class PedidoDetalleRS {
         return ResponseEntity.of(pedido);                
                    
     }
+    @GetMapping("/idpedido/{id}")
+    public List<PedidoDetalle> obtenerPorIdPedido(@PathVariable("id") Integer id){
+       List<PedidoDetalle> detalles = service.findAll();
+       List<PedidoDetalle> detallesfiltrado = new ArrayList<PedidoDetalle>();
+        for (PedidoDetalle detalle : detalles) {
+            System.out.println(detalle.getIdpedido().getIdpedido());
+            if(detalle.getIdpedido().getIdpedido() == id){
+                detallesfiltrado.add(detalle);
+            }
+        }
+        return detallesfiltrado;
+    }
     @PostMapping("/")
     public PedidoDetalle crearPedidoDetalle(@RequestBody PedidoDetalle pedido){
         return service.save(pedido);
+    }
+    @PostMapping("/all")
+    public List<PedidoDetalle> crearPedidoDetalles(@RequestBody List<PedidoDetalle> pedidos){
+        return service.saveAll(pedidos);
     }
     @DeleteMapping("/id/{id}")
     public ResponseEntity borrarPorId(@PathVariable("id") Integer id){
