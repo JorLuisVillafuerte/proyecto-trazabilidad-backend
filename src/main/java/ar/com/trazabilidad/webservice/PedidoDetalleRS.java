@@ -54,6 +54,7 @@ public class PedidoDetalleRS {
                 detallesfiltrado.add(detalle);
             }
         }
+        System.out.println("tamanio:"+detallesfiltrado.size());
         return detallesfiltrado;
     }
     @PostMapping("/")
