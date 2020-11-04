@@ -34,6 +34,7 @@ public class Productos implements Serializable {
     private String codProducto;
     private String descripcion;
     private String imagen;
+    private Integer cantidad;
     /*@OneToMany(mappedBy = "idproducto")
     private List<PedidoDetalle> pedidoDetalleList;
     */
